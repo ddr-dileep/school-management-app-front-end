@@ -44,7 +44,7 @@ export const AppNavigation = () => {
     <AppBar position="static" className="nagivation-bar">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <h3 className="nagivation-bar-logo">Auth task</h3>
+          <h3 className="nagivation-bar-logo">SMS</h3>
           <Box sx={{ flexGrow: 0 }}>
             {isLoggedIn ? (
               <Tooltip title="Open settings">
@@ -53,14 +53,9 @@ export const AppNavigation = () => {
                 </IconButton>
               </Tooltip>
             ) : (
-              <React.Fragment>
-                <Link to="/login" style={{ textDecoration: "none" }}>
-                  Login
-                </Link>
-                <Link to="/signup" style={{ textDecoration: "none" }}>
-                  Signup
-                </Link>
-              </React.Fragment>
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                Login
+              </Link>
             )}
             <Menu
               sx={{ mt: "45px" }}

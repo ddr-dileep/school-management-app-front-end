@@ -49,6 +49,20 @@ const authApiServices = {
       }
     }
   ),
+  loginSuperAdmin: createAsyncThunk(
+    "/auth/login/super-admin",
+    async (data, { rejectWithValue }) => {
+      try {
+        const response = await API.post("/auth/login/super-admin", data);
+        localStorage.setItem("auth", response?.data?.data?.token);
+        return response.data;
+      } catch (error) {
+        return rejectWithValue({
+          error: error?.response?.data,
+        });
+      }
+    }
+  ),
 };
 
 export default authApiServices;

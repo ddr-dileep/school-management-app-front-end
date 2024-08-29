@@ -5,11 +5,15 @@ import authApiServices from "../../redux/services/authServices";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
 import { defaultImageUrl, registerFields } from "../../utils/constants";
-import { fetchUserLocation } from "../../utils/userLocation";
 import { toast } from "react-toastify";
-import MemberList from "./components/MemberList";
-import locationApiServices from "../../redux/services/locationServices";
-import { AppButton, AppForm, AppLoader, AppModal, PageTitle, Toastify } from "../../components";
+import {
+  AppButton,
+  AppForm,
+  AppLoader,
+  AppModal,
+  PageTitle,
+  Toastify,
+} from "../../components";
 
 const Dashboard = () => {
   const [formValues, setFormValues] = useState({});
@@ -18,12 +22,8 @@ const Dashboard = () => {
   const isAuthenticatedUser = isAuthenticated();
   const [isOpen, setIsOpen] = useState(false);
   const { user, error } = useSelector((state) => state?.user);
-  const { nearByUsers } = useSelector((state) => state);
   const [isLoading, setIsLoading] = useState(true);
   const [profileDetails, setProfileDetails] = useState(user);
-  const nearRestUser = nearByUsers?.nearestUsers?.data;
-
-  console.log("nearRestUser", nearRestUser);
 
   async function getCurrentUser() {
     try {
@@ -43,7 +43,6 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    let latitude, longitude;
     if (!isAuthenticatedUser) {
       navigate("/login");
     }
@@ -52,22 +51,6 @@ const Dashboard = () => {
       getCurrentUser();
       setIsLoading(false);
     }, 500);
-
-    fetchUserLocation((location, error) => {
-      if (location) {
-        (latitude = location.latitude), (longitude = location.longitude);
-        setFormValues({ ...formValues, latitude, longitude });
-      } else {
-        console.error("Error fetching user location:", error);
-      }
-    });
-
-    dispatch(
-      locationApiServices.nearByUser({
-        latitude,
-        longitude,
-      })
-    );
   }, []);
 
   useEffect(() => {
@@ -118,7 +101,7 @@ const Dashboard = () => {
 
   return (
     <div className="user_dashboard">
-      <PageTitle title="Auth - dashboard" />
+      <PageTitle title="Super Admin- dashboard" />
       {isLoading && <AppLoader />}
       <Toastify />
       <div className="user_dashboard-container">
@@ -166,8 +149,6 @@ const Dashboard = () => {
           </AppButton>
         </div>
       </div>
-
-      <MemberList listData={nearRestUser} />
 
       <AppModal isOpen={isOpen} handleClose={handleClose} title="Edit profile">
         <div className="user_dashboard-container-edit_profile">

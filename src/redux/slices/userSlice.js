@@ -39,6 +39,20 @@ const userSlice = createSlice({
         state.error = action?.payload?.error;
       })
 
+      // login SuperAdmin
+      .addCase(authApiServices.loginSuperAdmin.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(authApiServices.loginSuperAdmin.fulfilled, (state, action) => {
+        state.status = "success";
+        state.user = action.payload;
+      })
+      .addCase(authApiServices.loginSuperAdmin.rejected, (state, action) => {
+        console.log("login slices registered ", action);
+        state.status = "none";
+        state.error = action?.payload?.error;
+      })
+
       // get user profile data
       .addCase(authApiServices.getUserInfo.pending, (state) => {
         state.status = "loading";

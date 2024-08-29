@@ -7,7 +7,14 @@ import { toast } from "react-toastify";
 import { clearAllState } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../utils";
-import { AppButton, AppForm, AppHeading, AppLoader, PageTitle, Toastify } from "../../components";
+import {
+  AppButton,
+  AppForm,
+  AppHeading,
+  AppLoader,
+  PageTitle,
+  Toastify,
+} from "../../components";
 
 const LoginPage = () => {
   const [formValues, setFormValues] = useState({});
@@ -32,9 +39,9 @@ const LoginPage = () => {
       toast.error(error.errors.errorMessage);
     }
 
-    return ()=>{
+    return () => {
       dispatch(clearAllState());
-    }
+    };
   }, [error]);
 
   const loginFormSubmit = async (event) => {
@@ -43,7 +50,7 @@ const LoginPage = () => {
 
       event.preventDefault();
       setIsLoading(true);
-      const res = await dispatch(authApiServices.login(formValues));
+      const res = await dispatch(authApiServices.loginSuperAdmin(formValues));
       if (res.payload?.success) {
         toast.success(res.payload.data.successMessage);
         setTimeout(() => {

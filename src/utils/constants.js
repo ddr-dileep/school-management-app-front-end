@@ -48,18 +48,18 @@ export const registerFields = [
 
 export const loginFields = [
   {
-    name: "email",
-    type: "email",
-    placeholder: "Email",
+    name: "username",
+    type: "test",
+    placeholder: "Username",
     isRequired: true,
-    id: "register-email",
+    id: "login-super-admin-username",
   },
   {
     name: "password",
     type: "password",
     placeholder: "Password",
     isRequired: true,
-    id: "register-password",
+    id: "login-super-admin-password",
   },
 ];
 
