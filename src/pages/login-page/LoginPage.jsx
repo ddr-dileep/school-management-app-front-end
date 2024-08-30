@@ -1,12 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { loginFields } from "../../utils/constants";
-import "./style.scss";
-import authApiServices from "../../redux/services/authServices";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { clearAllState } from "../../redux/slices/userSlice";
-import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../../utils";
+
+import "./style.scss";
 import {
   AppButton,
   AppForm,
@@ -15,6 +12,10 @@ import {
   PageTitle,
   Toastify,
 } from "../../components";
+import { isAuthenticated } from "../../utils";
+import { loginFields } from "../../utils/constants";
+import { clearAllState } from "../../redux/slices/userSlice";
+import authApiServices from "../../redux/services/authServices";
 
 const LoginPage = () => {
   const [formValues, setFormValues] = useState({});

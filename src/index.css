@@ -4,17 +4,17 @@
   box-sizing: border-box;
 }
 
-.main-app{
- background-color: rgb(255, 255, 255)
+.main-app {
+  min-height: 93.vh;
 }
 
-.MuiToolbar-root{
+.MuiToolbar-root {
   display: flex;
   justify-content: space-between;
 }
 
 a {
-  width:auto ;
+  width: auto;
   text-decoration: none;
   color: inherit;
 }

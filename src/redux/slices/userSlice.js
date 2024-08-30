@@ -53,6 +53,19 @@ const userSlice = createSlice({
         state.error = action?.payload?.error;
       })
 
+      // getSuperAdmin profile Info
+      .addCase(authApiServices.getSuperAdminInfo.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(authApiServices.getSuperAdminInfo.fulfilled, (state, action) => {
+        state.status = "success";
+        state.user = action.payload;
+      })
+      .addCase(authApiServices.getSuperAdminInfo.rejected, (state, action) => {
+        state.status = "none";
+        state.error = action?.payload?.error;
+      })
+
       // get user profile data
       .addCase(authApiServices.getUserInfo.pending, (state) => {
         state.status = "loading";

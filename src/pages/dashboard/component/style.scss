@@ -1,0 +1,32 @@
+.details_view {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2%;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.details_View_box {
+  width: 32%;
+  padding: 25px;
+  border: 1px solid #49006b42;
+  margin-top: 30px;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e0adf85b;
+
+  &_other {
+    font-size: 44px;
+    color: #650197;
+  }
+
+  &:hover {
+    transform: translateY(-7px);
+  }
+}

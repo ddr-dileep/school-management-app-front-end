@@ -42,9 +42,9 @@ export const AppNavigation = () => {
 
   return (
     <AppBar position="static" className="nagivation-bar">
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <h3 className="nagivation-bar-logo">SMS</h3>
+          <h3 className="nagivation-bar-logo">Admin</h3>
           <Box sx={{ flexGrow: 0 }}>
             {isLoggedIn ? (
               <Tooltip title="Open settings">
@@ -53,7 +53,7 @@ export const AppNavigation = () => {
                 </IconButton>
               </Tooltip>
             ) : (
-              <Link to="/login" style={{ textDecoration: "none" }}>
+              <Link to="/login-super-admin" style={{ textDecoration: "none" }}>
                 Login
               </Link>
             )}

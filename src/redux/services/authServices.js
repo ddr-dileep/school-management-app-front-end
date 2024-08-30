@@ -49,6 +49,8 @@ const authApiServices = {
       }
     }
   ),
+
+  // super-admin
   loginSuperAdmin: createAsyncThunk(
     "/auth/login/super-admin",
     async (data, { rejectWithValue }) => {
@@ -56,6 +58,19 @@ const authApiServices = {
         const response = await API.post("/auth/login/super-admin", data);
         localStorage.setItem("auth", response?.data?.data?.token);
         return response.data;
+      } catch (error) {
+        return rejectWithValue({
+          error: error?.response?.data,
+        });
+      }
+    }
+  ),
+  getSuperAdminInfo: createAsyncThunk(
+    "/auth/info/super-admin",
+    async (rejectWithValue) => {
+      try {
+        const response = await API.get("/auth/info/super-admin");
+        return response?.data?.data;
       } catch (error) {
         return rejectWithValue({
           error: error?.response?.data,
